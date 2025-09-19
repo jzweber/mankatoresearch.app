@@ -10,32 +10,29 @@ on:
   workflow_dispatch:
 
 env:
-  APPLICATION_PUBLISH_PROFILE: ${{ secrets.APP_PUBLISH_PROFILE }}
   WEBAPP_NAME: "mankatoresearch.app"
 
 jobs:
-  build:
+  build-and-deploy:
+    name: Build and Deploy Job
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Set up Node.js version
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: "22.x"
-
       - name: npm install, build, and test
         run: |
           npm install
           npm run build
           mv ./build/static ./build/standalone/build
           mv ./public ./build/standalone
-
+        working-directory: ./build/standalone
       - name: "Deploy to Azure Web App"
-        id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: "mankatoresearch"
+          app-name: mankatoresearch
           slot-name: "Production"
-          publish-profile: ${{ env.APPLICATION_PUBLISH_PROFILE }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ./build/standalone
