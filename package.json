@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "xcopy public .next\\standalone\\public /E /I /D && xcopy .next\\static .next\\standalone\\.next\\static /E /I /D && node .next\\standalone\\server.js",
     "lint": "eslint"
   },
   "engines": {
