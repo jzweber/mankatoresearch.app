@@ -1,8 +1,5 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
-permissions:
-  id-token: write # required for OIDC with Azure
-  contents: read # required to checkout code
 
 name: Build and deploy Node.js app to Azure Web App - mankatoresearch
 
@@ -19,9 +16,6 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read # read repo
-      id-token: write # required for Azure login
     steps:
       - uses: actions/checkout@v4
 
@@ -36,13 +30,6 @@ jobs:
           npm run build
           mv ./build/static ./build/standalone/build
           mv ./public ./build/standalone
-
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_186222D0322E411F85192F9622144700 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_140EA9729D5949A6B3E3E37C74ED5A9E }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_424177028CEC4E2191EE396EEA97DB16 }}
 
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
