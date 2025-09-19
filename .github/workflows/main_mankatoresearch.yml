@@ -28,7 +28,7 @@ jobs:
           npm run build
           mv ./build/static ./build/standalone/build
           mv ./public ./build/standalone
-        working-directory: ./build/standalone
+        working-directory: /build/standalone
       - name: "Deploy to Azure Web App"
         uses: azure/webapps-deploy@v3
         with:
