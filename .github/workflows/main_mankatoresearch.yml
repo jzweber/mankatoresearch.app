@@ -12,18 +12,18 @@ on:
 env:
   APPLICATION_PUBLISH_PROFILE: ${{ secrets.APP_PUBLISH_PROFILE }}
   WEBAPP_NAME: "mankatoresearch.app"
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
-  
+
     steps:
       - uses: actions/checkout@v4
 
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '22.x'
+          node-version: "22.x"
 
       - name: npm install, build, and test
         run: |
@@ -31,7 +31,7 @@ jobs:
           npm run build
           mv ./build/static ./build/standalone/build
           mv ./public ./build/standalone
-      
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -39,13 +39,11 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_140EA9729D5949A6B3E3E37C74ED5A9E }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_424177028CEC4E2191EE396EEA97DB16 }}
 
-      - name: 'Deploy to Azure Web App'
+      - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'mankatoresearch'
-          slot-name: 'Production'
+          app-name: "mankatoresearch"
+          slot-name: "Production"
           publish-profile: ${{ env.APPLICATION_PUBLISH_PROFILE }}
           package: ./build/standalone
-
-          
