@@ -77,7 +77,7 @@ const MobileMenu = async () => {
                                     }}>
                                     <button type="submit" style={{ cursor: "pointer" }} className="relative hover:opacity-85">
                                         <Image 
-                                        src={GitHubLoginLight} 
+                                        src={GitHubLoginDark} 
                                         alt="Login with GitHub" 
                                         width={125} 
                                         height={125}
