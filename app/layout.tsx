@@ -37,5 +37,4 @@ const RootLayout = ({
   );
 };
 
-export { rubik };
 export default RootLayout;
