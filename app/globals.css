@@ -1,26 +1,196 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+/* ---break---  */
+@custom-variant dark (&:is(.dark *));
+@plugin "@tailwindcss/typography";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: "Rubik";
+  src: url("./fonts/Rubik-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+/* For browsers that support clamp  */
+@supports (font-size: clamp(1rem, 1vi, 1rem)) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --font-size-xs: clamp(0.875rem, calc(0.1vi + 1.5rem), 1rem);
+    --font-size-sm: clamp(0.938rem, calc(0.13vi + 1.5rem), 1.1rem);
+    --font-size-base: clamp(1rem, calc(0.26vi + 1.5rem), 1.25rem);
+    --font-size-lg: clamp(1.15rem, calc(0.47vi + 1.5rem), 1.75rem);
+    --font-size-xl: clamp(1.25rem, calc(0.77vi + 1.5rem), 2.25rem);
+    --font-size-2xl: clamp(1.3rem, calc(1vi + 1.5rem), 3rem);
+    --font-size-3xl: clamp(1.375rem, calc(1.21vi + 1.5rem), 4rem);
+    --font-size-4xl: clamp(1.45rem, calc(1.5vi + 1.5rem), 4.25rem);
+    --font-size-5xl: clamp(1.525rem, calc(2vi + 1.5rem), 4.75rem);
+    --font-size-6xl: clamp(1.6rem, calc(2.5vi + 1.5rem), 5rem);
+    --font-size-7xl: clamp(1.75rem, calc(3vi + 1.5rem), 5.25rem);
+  }
+}
+/* For browsers that don't support clamp */
+@supports not (font-size: clamp(1rem, 1vi, 1rem)) {
+  :root {
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.8rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.56rem;
+    --font-size-2xl: 1.95rem;
+    --font-size-3xl: 2.44rem;
+    --font-size-4xl: 3.05rem;
+    --font-size-5xl: 3.81rem;
+    --font-size-6xl: 4.77rem;
+    --font-size-7xl: 5.96rem;
+  }
+  @media screen and (min-width: 1440px) {
+    :root {
+      --font-size-xs: 0.75rem;
+      --font-size-sm: 0.89rem;
+      --font-size-base: 1.19rem;
+      --font-size-lg: 1.58rem;
+      --font-size-xl: 2.11rem;
+      --font-size-2xl: 2.81rem;
+      --font-size-3xl: 3.75rem;
+      --font-size-4xl: 5rem;
+      --font-size-5xl: 6.66rem;
+      --font-size-6xl: 8.88rem;
+      --font-size-7xl: 11.84rem;
+    }
+  }
+}
+/* Define color and font variables */
+@theme {
+  --color-primary: #bb1515; /* orange */
+  --color-primary-100: #f53c04; /* light orange */
+  --color-primary-200: #fa5624; /* light orange */
+  --color-primary-300: #18105f; /* midnight blue */
+
+  --color-secondary: #aa1212; /* deep red */
+  --color-secondary-100: #33c5ff; /* light blue */
+  --color-secondary-300: #f1c40f; /* deep yellow */
+
+  --color-white: #ffffff; /* white */
+  --color-white-100: #e6e6e9; /* platinum */
+  --color-gray: #f5f5f5; /* light gray */
+  --color-gray-100: #e0e0e0; /* medium gray */
+  --color-silver: #bdc3c7; /* silver */
+  --color-beige: #f5f5dc; /* beige */
+  --color-black: #000000; /* black */
+  --color-black-100: #1c1c1c; /* blueish gray */
+  --color-black-200: #392f5a; /* blueish gray */
+}
+
+::selection {
+  background-color: var(--color-primary-100);
+  color: #ffffff; /* Sets the color of the selected text to white */
+}
+
+@layer base {
+  html {
+    @apply bg-white text-black;
+  }
+  header {
+    @apply shadow-sm;
+  }
+  h1 {
+    font-size: var(--font-size-4xl);
+    @apply font-medium;
+  }
+  h2 {
+    font-size: var(--font-size-3xl);
+    @apply font-semibold;
+  }
+  h3 {
+    font-size: var(--font-size-2xl);
+    @apply font-bold;
+  }
+  h4 {
+    font-size: var(--font-size-xl);
+    @apply font-bold;
+  }
+  h5 {
+    font-size: var(--font-size-xl);
+    @apply font-light;
+  }
+  h6 {
+    font-size: var(--font-size-lg);
+    @apply font-extralight;
+  }
+  p {
+    font-size: var(--font-size-base);
+    @apply font-normal;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Button styles */
+  .button {
+    @apply inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-blue-500 focus-visible:ring-[3px] focus-visible:ring-blue-500/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-red-500 aria-invalid:ring-red-500/20 dark:aria-invalid:ring-red-700/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4;
+  }
+  .button-default {
+    @apply cursor-pointer bg-primary-100 px-4 py-2 font-semibold text-white shadow hover:bg-primary-200;
+  }
+  .button-destructive {
+    @apply cursor-pointer bg-red-600 text-white shadow hover:bg-red-700 focus-visible:ring-red-300 dark:bg-red-700 dark:focus-visible:ring-red-800;
+  }
+  .button-outline {
+    @apply cursor-pointer border bg-white shadow hover:bg-gray-100 hover:text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700;
+  }
+  .button-secondary {
+    @apply cursor-pointer bg-green-500 text-white shadow hover:bg-green-600;
+  }
+  .button-ghost {
+    @apply cursor-pointer hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-700;
+  }
+  .button-link {
+    @apply cursor-pointer text-orange-500 underline-offset-4 hover:underline;
+  }
+  .button-medium {
+    @apply h-9 px-4 py-2 has-[>svg]:px-3;
+  }
+  .button-small {
+    @apply h-8 gap-1.5 rounded-md px-3 has-[>svg]:px-2.5;
+  }
+  .button-large {
+    @apply h-10 rounded-md px-6 has-[>svg]:px-4;
+  }
+  .button-icon {
+    @apply size-9;
+  }
+}
+
+@layer utilities {
+  .link {
+    position: relative;
+    text-decoration: none;
+    display: inline-block;
+    @apply hover:bg-gray-100 pb-2 rounded-md;
+  }
+
+  .link::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-primary);
+    transform-origin: bottom left;
+    transition: transform 0.35s ease-out;
+  }
+
+  .link:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  .menu-open {
+    @apply block; /* Show when open */
+  }
+
+  .padding-clamp {
+    padding-left: clamp(0.5rem, 5vw, 1rem);
+    padding-right: clamp(0.5rem, 5vw, 1rem);
+  }
 }
