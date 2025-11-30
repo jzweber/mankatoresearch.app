@@ -19,9 +19,7 @@ const NavBar = async () => {
 
             {/* Logo and Site Name */}
 
-            <Link href="/"><h4 className="hidden sm:inline whitespace-nowrap italic pl-5 pr-20 text-primary cursor-pointer hover:text-secondary">MANKATO RESEARCH</h4></Link>
-            <Link href="/"><p className="sm:hidden whitespace-nowrap font-bold italic pl-5 pr-20 text-primary cursor-pointer hover:text-secondary">MANKATO RESEARCH</p></Link>
-            {/* Navigation Links */}
+            <Link href="/"><p className=" font-bold xs:inline xs:text-2xl sm:text-3xl whitespace-nowrap italic pl-5 pr-20 text-primary cursor-pointer hover:text-secondary">MANKATO RESEARCH</p></Link>
 
             <ul className="hidden md:flex text-xl font-semibold">
               <li className="hidden lg:block">
@@ -62,7 +60,7 @@ const NavBar = async () => {
                                 alt="Profile Picture" 
                                 width={40} 
                                 height={40} 
-                                className="rounded-full hover:border-solid hover:border-2 border-black"
+                                className="rounded-full hover:outline-none hover:ring-2 hover:ring-primary"
                   />
                 </Link> 
                 <form action={async () => {

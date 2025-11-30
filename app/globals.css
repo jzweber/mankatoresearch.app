@@ -1,7 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-/* ---break---  */
-@custom-variant dark (&:is(.dark *));
 @plugin "@tailwindcss/typography";
 
 @font-face {
@@ -78,11 +75,13 @@
   --color-black: #000000; /* black */
   --color-black-100: #1c1c1c; /* blueish gray */
   --color-black-200: #392f5a; /* blueish gray */
+
+  --breakpoint-xs: 480px;
+  --breakpoint-xss: 320px;
 }
 
 ::selection {
-  background-color: var(--color-primary-100);
-  color: #ffffff; /* Sets the color of the selected text to white */
+  background-color: var(--color-gray-100);
 }
 
 @layer base {

@@ -6,21 +6,22 @@ const HomePage = () => {
       
       {/* Hero Section */}
       <section className="text-center py-16">
-        <h1 className="text-5xl font-bold text-primary mb-4">Lorem Ipsum Project</h1>
+        <h1 className="text-5xl font-bold text-primary mb-4">Welcome to the SLM Demo</h1>
         <p className="text-xl text-gray-600 dark:text-gray-300">
-          Placeholder <em>Demo</em> Website
+          Prompt Injection through <em>SLM</em> Integration
         </p>
         <p className="mt-6 max-w-3xl mx-auto text-lg">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.
+          The goal of this project is to enhance the defense capabilities of small language models against prompt injection attacks with jailbreaking techniques.
         </p>
       </section>
 
       {/* What is the Gauntlet? Section */}
       <section className="py-16 bg-gray-50 dark:bg-gray-800 dark:text-white rounded-lg">
         <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-8">Section One: Main Concept</h2>
+          <h2 className="text-4xl font-bold text-center mb-8">Section One: Designing the SLM</h2>
           <p className="text-lg mb-6">
-            Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            The small language model (SLM) is designed to be robust against various prompt injection attacks. It was finetuned on a dataset specifically for general chatbot 
+            interactions - 15
           </p>
           <p className="text-lg">
             Here are some key features:
