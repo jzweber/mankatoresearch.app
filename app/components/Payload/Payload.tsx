@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Settings = () => {
+const Payload= () => {
   return (
     <div>Settings</div>
   )
 }
 
-export default Settings
+export default Payload

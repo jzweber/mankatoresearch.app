@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Analytics from '../Analytics/Analytics';
 import Reports from '../Reports/Reports';
-import Settings from '../Settings/Settings';
+import Payload from '../Payload/Payload';
 
 const DashboardTabs = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,24 +19,24 @@ const DashboardTabs = ({ children }: Readonly<{ children: React.ReactNode }>) =>
 
   return (
     <>
-        <Tabs defaultValue="overview" className="w-full">
+        <Tabs defaultValue="chatbot" className="w-full">
             <TabsList>
-                <TabsTrigger value="overview">Overview</TabsTrigger>
-                <TabsTrigger value="analytics">Analytics</TabsTrigger>
+                <TabsTrigger value="overview">Chatbot</TabsTrigger>
+                <TabsTrigger value="payload">Payload</TabsTrigger>
                 <TabsTrigger value="reports">Reports</TabsTrigger>
-                <TabsTrigger value="settings">Settings</TabsTrigger>
+                <TabsTrigger value="analytics">Analytics</TabsTrigger>
             </TabsList>
-            <TabsContent value="overview">
+            <TabsContent value="chatbot">
                 {children}
             </TabsContent>
-            <TabsContent value="analytics">
-                <Analytics />
+            <TabsContent value="payload">
+                <Payload />
             </TabsContent>
             <TabsContent value="reports">
                 <Reports />
             </TabsContent>
-            <TabsContent value="settings">
-                <Settings />
+            <TabsContent value="analytics">
+                <Analytics />
             </TabsContent>
         </Tabs>
         

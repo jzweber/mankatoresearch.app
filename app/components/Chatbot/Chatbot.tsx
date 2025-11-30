@@ -7,6 +7,7 @@ provides feedback to the user during message processing.
 "use client";
 import React from 'react'
 import {useState } from "react";
+import MessageParser from '../MathRenderer/MessageParser';
 interface Message {
   role: string;
   content: string;
@@ -88,7 +89,7 @@ const Chatbot = () => {
                       : "bg-amber-100 text-amber-800 mx-auto text-center"
                   }`}
                 >
-                  {msg.content}
+                  <MessageParser content={msg.content} />
                 </div>
               ))
             )}
@@ -106,13 +107,6 @@ const Chatbot = () => {
                 focus:outline-none focus:ring-2 focus:ring-primary ${isLoading ? 'bg-gray-100 cursor-not-allowed' : ''}`}
               />
               <div className="absolute flex space-x-0.5 right-1 top-1/2 transform -translate-y-1/2">
-                <button
-                  disabled={isLoading}
-                  className={`flex-shrink-0 px-4 py-1.5 border-primary-200 bg-primary text-white rounded-l-full transition-all 
-                  ${!isLoading ? 'hover:bg-secondary hover:scale-105 cursor-pointer' :'opacity-60 cursor-not-allowed'}`}
-                >
-                  @
-                </button>
                 <button
                   type="submit"
                   disabled={isLoading}

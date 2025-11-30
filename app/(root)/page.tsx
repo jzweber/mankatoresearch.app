@@ -15,7 +15,8 @@ const HomePage = async () => {
           Prompt Injection through <em>SLM</em> Integration
         </p>
         <p className="mt-6 max-w-3xl mx-auto text-lg">
-          The goal of this project is to enhance the defense capabilities of small language models against prompt injection attacks with jailbreaking techniques.
+          The goal of this project is to enhance the defense capabilities of small language models against prompt injection attacks with jailbreaking techniques. Prompt injection attacks involve malicious prompts to cause unintended consequences on the output a user receives. Existing literature splits prompt injection into two distinct types – direct and indirect prompt injections. 
+          Direct prompt injections occur when an attacker directly includes malicious instructions in the input prompt, while indirect prompt injections involve manipulating the context or environment in which the model operates to influence its behavior.
         </p>
       </section>
 
