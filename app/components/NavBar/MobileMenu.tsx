@@ -5,21 +5,14 @@ import GoogleLoginLight from "../../../public/Web (mobile + desktop)/png@3x/ligh
 import GoogleLoginDark from "../../../public/Web (mobile + desktop)/png@3x/dark/web_dark_rd_ctn@3x.png"
 import GitHubLoginDark from "../../../public/GitHub_Logos/GitHub Logos/PNG/GitHub_Lockup_Dark.png"
 import GitHubLoginLight from "../../../public/GitHub_Logos/GitHub Logos/PNG/GitHub_Lockup_Light.png"
+import { type Session } from "next-auth";
 
-const MobileMenu = async () => {
-     const session = await auth();
+const MobileMenu = async ({session}: {session: Session | null}) => {
         return (
             <>
                 {/* Mobile Menu */}
-                <nav className="sticky w-full sm:w-100 bg-gray-50 z-10 min-h-[calc(100vh-2.5rem)] border-4 border-primary">
+                <nav className="sticky w-full md:w-100 bg-gray-50 z-10 min-h-[20vh] border-4 border-primary">
                     <ul className="text-center pb-2 px-8 text-gray-700 block font-semibold whitespace-nowrap text-lg">
-                    <li className="py-4 mb-8 font-bold border-b-4 border-double">Welcome to Mankato Research</li>
-                    <li className="p-4"><Link href="/" className="link padding-clamp w-full border-b-3">Home</Link></li>
-                    <li className="p-4"><Link href="/about" className="link padding-clamp w-full border-b-3">About</Link></li>
-                    <li className="p-4"><Link href="/contact" className="link padding-clamp w-full border-b-3">Contact</Link></li>
-                    {session && session.user && (
-                        <li className="p-4"><Link href="/dashboard" className="link padding-clamp w-full border-b-3">Dashboard</Link></li>
-                    )}
                     {/* Authentication Buttons */}
                     {session && session.user ? (
                     <li className="flex gap-10 py-10 items-center justify-center">
@@ -43,13 +36,13 @@ const MobileMenu = async () => {
                         </form>
                     </li>
                     ) : ( 
-                    <div className="flex gap-5 align-baseline justify-center items-center pt-1 pl-5 pr-5">
+                    <div className="flex flex-col gap-5 justify-center items-center pt-5 pl-5 pr-5">
                         {/* Login Buttons */}
                         <li>
                         <form action={async () => {
                                         "use server";   
 
-                                        await signIn("google", {redirectTo: "/dashboard"});
+                                        await signIn("google", {redirectTo: "/#dashboard"});
                                     }}>
                                     <button type="submit" style={{ cursor: "pointer" }} className="relative hover:opacity-85">
                                         <Image 
@@ -73,7 +66,7 @@ const MobileMenu = async () => {
                         <form action={async () => {
                                         "use server";
 
-                                        await signIn("github", {redirectTo: "/dashboard"});
+                                        await signIn("github", {redirectTo: "/#dashboard"});
                                     }}>
                                     <button type="submit" style={{ cursor: "pointer" }} className="relative hover:opacity-85">
                                         <Image 

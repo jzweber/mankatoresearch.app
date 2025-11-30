@@ -58,6 +58,7 @@ const Chatbot = () => {
             role: "system",
             content: 'Sorry, could not fetch chat response. Please try again later.',
         };
+        
         //add system message to chat
         setMessages((prev) => [...prev, systemMessage]);
         }

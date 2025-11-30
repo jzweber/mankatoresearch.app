@@ -26,12 +26,12 @@ const MobileNav = ({ children, session }: MobileNavProperties) => {
 
   return (
     <>
-      <nav className="block xl:hidden fixed top-2 right-4 z-50">
+      <nav className="block md:hidden fixed top-2 right-4 z-50">
         <button onClick={toggleMenu} className="focus:outline-none">
           <HamburgerIcon className="text-primary" />
         </button>
       </nav>
-      <div className={`${isMenuOpen ? "flex" : "hidden"} xl:hidden justify-end h-auto`}>
+      <div className={`${isMenuOpen ? "flex" : "hidden"} md:hidden justify-end h-auto`}>
         {children}
       </div>
     </>

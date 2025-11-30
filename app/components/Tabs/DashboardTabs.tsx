@@ -3,6 +3,9 @@ import React from 'react'
 import {Tabs, TabsContent, TabsList, TabsTrigger } from '@/app/components/Tabs/tabs'
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import Analytics from '../Analytics/Analytics';
+import Reports from '../Reports/Reports';
+import Settings from '../Settings/Settings';
 
 const DashboardTabs = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,10 +16,6 @@ const DashboardTabs = ({ children }: Readonly<{ children: React.ReactNode }>) =>
       setIsMenuOpen(false);
     }
   }, [pathname]);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
 
   return (
     <>
@@ -31,10 +30,13 @@ const DashboardTabs = ({ children }: Readonly<{ children: React.ReactNode }>) =>
                 {children}
             </TabsContent>
             <TabsContent value="analytics">
+                <Analytics />
             </TabsContent>
             <TabsContent value="reports">
+                <Reports />
             </TabsContent>
             <TabsContent value="settings">
+                <Settings />
             </TabsContent>
         </Tabs>
         
