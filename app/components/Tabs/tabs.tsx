@@ -61,12 +61,16 @@ function TabsTrigger({
 
 function TabsContent({
   className,
+  forceMount,
+  value,
   ...props
 }: React.ComponentProps<typeof TabsPrimitive.Content>) {
   return (
     <TabsPrimitive.Content
       data-slot="tabs-content"
-      className={cn("flex-1 min-h-[600px] outline-none", className)}
+      forceMount={forceMount}
+      value={value}
+      className={cn("flex-1 min-h-[600px] outline-none overflow-hidden data-[state=inactive]:hidden", className)}
       {...props}
     />
   )

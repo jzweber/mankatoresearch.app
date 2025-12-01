@@ -1,6 +1,5 @@
 import React from 'react';
 import DashboardTabs from '../components/Tabs/DashboardTabs';
-import Chatbot from '../components/Chatbot/Chatbot';
 import {auth} from "@/auth";
 import DashboardScroll from '../components/DashboardScroll/DashboardScroll';
 
@@ -33,7 +32,7 @@ const HomePage = async () => {
           <ul className="list-disc list-inside mt-4 text-lg space-y-2">
             <li><strong>Feature One:</strong> Fine-tuned with LoRA on a diverse dataset for chatbot interactions</li>
             <li><strong>Feature Two:</strong> Corpus contains a wide range of statistical data from Wikipedia</li>
-            <li><strong>Feature Three:</strong> Connected to database for testing security vulnerabilities</li>
+            <li><strong>Feature Three:</strong> Evaluated with top benchmarks in the field</li>
           </ul>
         </div>
       </section>
@@ -42,13 +41,13 @@ const HomePage = async () => {
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-8">Testing for Prompt Injection</h2>
           <p className="text-lg mb-6">
-            Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.
+            To evaluate the SLM's resilience against prompt injection attacks, we designed a series of tests that simulate indirect injection scenarios. These tests help us understand how well the model can maintain its intended behavior in the face of adversarial inputs.
           </p>
           <div className="text-center">
             <p className="text-2xl font-semibold">Step One ➡️ Step Two ➡️ Step Three</p>
           </div>
           <p className="text-lg mt-6">
-            Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper <strong>nulla non metus</strong> auctor fringilla.
+            To simulate indirect prompt injection, we crafted scenarios where the context or environment is manipulated to influence the model's behavior without directly altering the input prompt. This approach helps us identify potential vulnerabilities and improve the model's robustness.
           </p>
         </div>
       </section>
@@ -57,7 +56,7 @@ const HomePage = async () => {
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-8">Why This Matters</h2>
           <p className="text-lg">
-            Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
+            Understanding and mitigating prompt injection attacks is crucial for deploying reliable and secure language models. By rigorously testing the SLM against these threats, we can ensure it behaves as intended, protecting users and maintaining trust in AI systems.
           </p>
         </div>
       </section>
@@ -76,9 +75,7 @@ const HomePage = async () => {
         <div className="w-full bg-secondary my-32 p-0.5"></div>
         <DashboardScroll />
         <h2 className=" font-bold mb-6">Dashboard</h2>
-        <DashboardTabs>
-          <Chatbot />
-        </DashboardTabs>
+        <DashboardTabs />
       </div>
       ) : null}
       

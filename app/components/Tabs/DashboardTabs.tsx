@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 import Analytics from '../Analytics/Analytics';
 import Reports from '../Reports/Reports';
 import Payload from '../Payload/Payload';
-
-const DashboardTabs = ({ children }: Readonly<{ children: React.ReactNode }>) => {
+import Chatbot from '../Chatbot/Chatbot';
+const DashboardTabs = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
 
@@ -21,21 +21,21 @@ const DashboardTabs = ({ children }: Readonly<{ children: React.ReactNode }>) =>
     <>
         <Tabs defaultValue="chatbot" className="w-full">
             <TabsList>
-                <TabsTrigger value="overview">Chatbot</TabsTrigger>
+                <TabsTrigger value="chatbot">Chatbot</TabsTrigger>
                 <TabsTrigger value="payload">Payload</TabsTrigger>
                 <TabsTrigger value="reports">Reports</TabsTrigger>
                 <TabsTrigger value="analytics">Analytics</TabsTrigger>
             </TabsList>
-            <TabsContent value="chatbot">
-                {children}
+            <TabsContent value="chatbot" forceMount={true}>
+                <Chatbot />
             </TabsContent>
-            <TabsContent value="payload">
+            <TabsContent value="payload" forceMount={true}>
                 <Payload />
             </TabsContent>
-            <TabsContent value="reports">
+            <TabsContent value="reports" forceMount={true}>
                 <Reports />
             </TabsContent>
-            <TabsContent value="analytics">
+            <TabsContent value="analytics" forceMount={true}>
                 <Analytics />
             </TabsContent>
         </Tabs>
